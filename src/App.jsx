@@ -1,14 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment , decrement } from './Redux/Slice'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
 
   return (
     <>
-    <h1>Hello World</h1>
+    <div>
+    <button onClick={() => dispatch(decrement())}>-</button>
+    <h1>The initial count is {count}</h1>
+    <button onClick={() => dispatch(increment())}>+</button>
+    </div>
     </>
   )
 }
